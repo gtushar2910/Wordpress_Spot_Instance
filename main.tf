@@ -2,8 +2,8 @@
 
 provider "aws" {
   region     = "us-east-1"
-  access_key = file("secret_data.txt")
-  secret_key = file("secret_access_data.txt")
+  access_key = file("access")
+  secret_key = file("secret")
 }
 
 resource "aws_vpc" "prod-vpc" {
@@ -112,9 +112,9 @@ data "template_file" "script" {
     url       = var.url
     email     = var.email
     root_password = var.root_password
-    moodledb = var.moodledb
-    moodleuser = var.moodleuser
-    moodlepwd = var.moodlepwd
+    wordpress_db = var.wordpress_db
+    wordpress_user = var.wordpress_user
+    wordpress_pwd = var.wordpress_pwd
   }
 }
 
@@ -136,11 +136,11 @@ resource "aws_spot_instance_request" "Moodle-Spot-AllInOne" {
   user_data = data.template_file.script.rendered
 
   tags = {
-    name = "Moodle-Server"
+    name = "Wordpress-Terraform"
   }
 }
 
-resource "aws_route53_record" "moodle" {
+resource "aws_route53_record" "wordpress" {
   zone_id = var.hosted_zone_id
   name    = var.url
   type    = "A"

@@ -34,13 +34,13 @@ variable "root_password"{
   description = "Root Password"
 }
 
-variable "moodledb"{
+variable "wordpress_db"{
   description = "Moodle DB"
 }
-variable "moodleuser"{
+variable "wordpress_user"{
   description = "Moodle User"
 }
-variable "moodlepwd"{
+variable "wordpress_pwd"{
   description = "Moodle Pwd"
 }
 
