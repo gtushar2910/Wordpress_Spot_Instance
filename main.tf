@@ -118,7 +118,7 @@ data "template_file" "script" {
   }
 }
 
-resource "aws_spot_instance_request" "Moodle-Spot-AllInOne" {
+resource "aws_spot_instance_request" "Wordpress-Spot-AllInOne" {
 
   ami                             = var.ami
   instance_type                   = var.instance_type
