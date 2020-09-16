@@ -1,4 +1,4 @@
-# Moodle Installation using Amazon Spot Instance
+# Wordpress Installation using Amazon Spot Instance
 
 ## Requirements
 
@@ -28,7 +28,7 @@ terraform apply -var-file=../vars/variables.tfvars
 
 ## Post-Install
 
-It will take about 5 to 10 minutes to complete the installation of Moodle Server. Once the Moodle Server is installaed, you can access it via the URL that you have provided in the variables.tfvars file (i.e. moodle.example.com in this case).
+It will take about 5 to 10 minutes to complete the installation of Wordpress. Once the Wordpress is installaed, you can access it via the URL that you have provided in the variables.tfvars file (i.e. myblog.example.com).
 
 ## Remove
 
