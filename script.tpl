@@ -68,7 +68,7 @@ mv wp-config-sample.php wp-config.php
 
 wget https://terraform-triple5.s3.amazonaws.com/moodle -P /etc/nginx/sites-available/
 mv /etc/nginx/sites-available/moodle /etc/nginx/sites-available/wordpress
-sed -i "s/root /var/www/moodle;/root /var/www/wordpress/g" /etc/nginx/sites-available/wordpress
+sed -i "s/root /var/www/moodle;/root /var/www/wordpress;/g" /etc/nginx/sites-available/wordpress
 sed -i "s/server_name  moodle.triple5.in;/server_name  ${url};/g" /etc/nginx/sites-available/wordpress
 ln -s /etc/nginx/sites-available/wordpress /etc/nginx/sites-enabled/
 systemctl restart nginx.service
@@ -82,7 +82,7 @@ echo "request_terminate_timeout = 360" >> /etc/php/7.4/fpm/pool.d/www.conf
 sed -i 's/max_execution_time = 30/max_execution_time = 360/g' /etc/php/7.4/fpm/php.ini
 sed -i "s/define( 'DB_NAME', 'database_name_here' );/define( 'DB_NAME', '${wordpress_db}' );/g" /var/www/wordpress/wp-config.php
 sed -i "s/define( 'DB_USER', 'username_here' );/define( 'DB_USER', '${wordpress_user}' );/g" /var/www/wordpress/wp-config.php
-sed -i "s/define( 'DB_PASSWORD', 'password_here' );/define( 'DB_USER', '${wordpress_pwd}' );/g" /var/www/wordpress/wp-config.php
+sed -i "s/define( 'DB_PASSWORD', 'password_here' );/define( 'DB_PASSWORD', '${wordpress_pwd}' );/g" /var/www/wordpress/wp-config.php
 
 snap install --classic certbot
 certbot --nginx --agree-tos --no-eff-email --email ${email} -d ${url}
